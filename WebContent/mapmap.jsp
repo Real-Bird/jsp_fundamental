@@ -55,7 +55,7 @@
 
 	<section>
 		<div id="map_header">
-		<h2>kakaomap API practice</h2>
+		<h2>Time Wizard Map</h2>
 		</div>
 	<div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -63,7 +63,7 @@
     <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
-                    <input type="hidden" value="근린공원" id="keyword" size="15" onsubmit="searchPlaces()">
+                    <input type="hidden" value="서점" id="keyword" size="15" onsubmit="searchPlaces()">
             </div>
         </div>
         <hr>
@@ -77,7 +77,6 @@
 </body>
 <script>
 if (navigator.geolocation) {
-
 	// GeoLocation을 이용해서 접속 위치를 얻기
 	navigator.geolocation.getCurrentPosition(function getLocation(position) {
 		
@@ -93,13 +92,11 @@ if (navigator.geolocation) {
 		
 		// 지도를 생성
 		var map = new kakao.maps.Map(mapContainer, mapOption); 
-
 		/* var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
 	        center: new kakao.maps.LatLng(37.567291412313274, 126.98226358838974), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
-
 	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 	var map = new kakao.maps.Map(mapContainer, mapOption);  */
 		
@@ -117,7 +114,6 @@ if (navigator.geolocation) {
     
         // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition, message);
-
 		// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 		function displayMarker(locPosition, message) {
 		
@@ -157,7 +153,6 @@ if (navigator.geolocation) {
 		
 		// 키워드 검색을 요청하는 함수입니다
 		function searchPlaces() {
-
 			var keyword = document.getElementById('keyword').value;
 		    if (!keyword.replace(/^\s+|\s+$/g, '')) {
 		        alert('키워드를 입력해주세요!');
@@ -353,7 +348,6 @@ if (navigator.geolocation) {
 		        el.removeChild (el.lastChild);
 		    }
 		}
-
 });
 }
 </script>
