@@ -63,12 +63,7 @@
     <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
-            	<button id="btn1" class="btn">서점</button>
-                    <input type="hidden" value="서점" id="keyword1" size="15" onsubmit="searchPlaces()">
-            </div>
-            <div>
-            	<button id="btn2" class="btn">영화관</button>
-                    <input type="hidden" value="영화관" id="keyword2" size="15" onsubmit="searchPlaces()">
+                    <input type="hidden" value="서점" id="keyword" size="15" onsubmit="searchPlaces()">
             </div>
         </div>
         <hr>
@@ -81,7 +76,7 @@
 	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f54af8924919de3e88d60eba1ed58b18&amp;libraries=services,clusterer"></script>
 </body>
 <script>
-/* if (navigator.geolocation) {
+if (navigator.geolocation) {
 
 	// GeoLocation을 이용해서 접속 위치를 얻기
 	navigator.geolocation.getCurrentPosition(function getLocation(position) {
@@ -93,20 +88,20 @@
 		
 		mapOption = {
 			center : new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표, kh정보교육원 강남점
-			level : 10 // 지도의 확대 레벨
+			level : 5 // 지도의 확대 레벨
 		};
 		
 		// 지도를 생성
-		var map = new kakao.maps.Map(mapContainer, mapOption); */
-$(function(){		
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+		/* var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
 	        center: new kakao.maps.LatLng(37.567291412313274, 126.98226358838974), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
 
 	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	var map = new kakao.maps.Map(mapContainer, mapOption);  */
 		
 		// 마우스 휠과 모바일 터치를 이용한 지도 확대, 축소를 막는다
 		map.setZoomable(false);
@@ -117,7 +112,7 @@ $(function(){
 		// 지도의 우측에 확대 축소 컨트롤을 추가한다
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 				
-		var locPosition = new kakao.maps.LatLng(37.567291412313274, 126.98226358838974), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+		var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
         message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
     
         // 마커와 인포윈도우를 표시합니다
@@ -172,7 +167,7 @@ $(function(){
 		    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
 		    ps.keywordSearch( keyword, placesSearchCB,{
 		    	location : locPosition,
-		    	radius : 1000,
+		    	radius : 10000,
 		    	sort : kakao.maps.services.SortBy.DISTANCE
 		    	}); 
 		}
@@ -358,8 +353,8 @@ $(function(){
 		        el.removeChild (el.lastChild);
 		    }
 		}
-}); //jquery end
-/* 	});
-} */
+
+});
+}
 </script>
 </html>

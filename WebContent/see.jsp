@@ -63,7 +63,12 @@
     <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
-                    <input type="hidden" value="강남 스터디룸" id="keyword" size="15" onsubmit="searchPlaces()">
+            <button id="btn1">서점</button>
+                    <input type="hidden" value="서점" id="keyword1" size="15" onsubmit="searchPlaces()">
+            </div>
+            <div>
+            <button id="btn2">카페</button>
+                    <input type="hidden" value="카페" id="keyword2" size="15" onsubmit="searchPlaces()">
             </div>
         </div>
         <hr>
@@ -145,12 +150,14 @@ if (navigator.geolocation) {
 		
 		// 키워드로 장소를 검색합니다
 		searchPlaces();
-		
+		document.getElementById("btn1").addEventListener('click', searchPlaces);
 		// 키워드 검색을 요청하는 함수입니다
 		function searchPlaces() {
-		
-		    var keyword = document.getElementById('keyword').value;
-		
+			
+		    var keyword = document.getElementById('keyword1').value;
+			
+		    
+		    
 		    if (!keyword.replace(/^\s+|\s+$/g, '')) {
 		        alert('키워드를 입력해주세요!');
 		        return false;
@@ -246,7 +253,7 @@ if (navigator.geolocation) {
 		function getListItem(index, places) {
 		
 		    var el = document.createElement('li'),
-		    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+		    itemStr = '<span=u class="markerbg marker_' + (index+1) + '"></span>' +
 		                '<div class="info">' +
 		                '   <h5>' + places.place_name + '</h5>';
 		
@@ -346,6 +353,7 @@ if (navigator.geolocation) {
 	
 	} else { //현재 위치 서비스를 지원하지 않을 때 
 		console.log("현재 위치 서비스를 지원하지 않는 브라우저입니다.");
+	}
 	}
 </script>
 </html>
