@@ -57,17 +57,21 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (con != null)
-					con.close(); //Connection 자원 반납, 닫아 없애는 것 아님
-				if (pstmt != null)
-					pstmt.close();
-				if (rs != null)
-					rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			close(con, pstmt, rs);
 		}
 		return list;
+	}
+
+	private void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			if (con != null)
+				con.close(); //Connection 자원 반납, 닫아 없애는 것 아님
+			if (pstmt != null)
+				pstmt.close();
+			if (rs != null)
+				rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

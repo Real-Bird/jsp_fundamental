@@ -12,7 +12,8 @@
         $(function () {
             $('#id').focus();
             $('#sendMember').click(function (event) {
-                //$('#sendMember').bind("click", function(event)){
+                
+            	//$('#sendMember').bind("click", function(event)){
                 //$('#sendMember').on("click", function(event)){
                 //원래의 기능을 못쓰게 한다.
                 //submit 버튼의 기능 : action url 이동

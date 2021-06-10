@@ -49,7 +49,7 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 </style>
-
+<script src="../js/jquery-3.6.0.js"></script>
 </head>
 <body>
 
@@ -63,7 +63,12 @@
     <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
-                    <input type="hidden" value="서점" id="keyword" size="15" onsubmit="searchPlaces()">
+            	<button id="btn1" class="btn">서점</button>
+                    <input type="hidden" value="서점" id="keyword1" size="15" onsubmit="searchPlaces()">
+            </div>
+            <div>
+            	<button id="btn2" class="btn">영화관</button>
+                    <input type="hidden" value="영화관" id="keyword2" size="15" onsubmit="searchPlaces()">
             </div>
         </div>
         <hr>
@@ -93,7 +98,7 @@
 		
 		// 지도를 생성
 		var map = new kakao.maps.Map(mapContainer, mapOption); */
-		
+$(function(){		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
 	        center: new kakao.maps.LatLng(37.567291412313274, 126.98226358838974), // 지도의 중심좌표
@@ -157,9 +162,8 @@
 		
 		// 키워드 검색을 요청하는 함수입니다
 		function searchPlaces() {
-		
-		    var keyword = document.getElementById('keyword').value;
-		
+
+			var keyword = document.getElementById('keyword').value;
 		    if (!keyword.replace(/^\s+|\s+$/g, '')) {
 		        alert('키워드를 입력해주세요!');
 		        return false;
@@ -354,6 +358,7 @@
 		        el.removeChild (el.lastChild);
 		    }
 		}
+}); //jquery end
 /* 	});
 } */
 </script>

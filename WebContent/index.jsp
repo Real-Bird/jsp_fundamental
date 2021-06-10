@@ -4,9 +4,7 @@
 	<!-- breadcrumb start -->
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Home</a></li>
-			<li class="breadcrumb-item"><a href="#">Library</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Data</li>
+			<li class="breadcrumb-item"><a href="/index.jsp">홈</a></li>
 		</ol>
 	</nav>
 	<!-- breadcrumb end -->
@@ -15,6 +13,7 @@
 		<!-- col start -->
 		<div class="row">
 			<div class="col-m-12">
+			<h1>안녕하세요? 환영합니다.</h1>
 			<!-- content field -->
 			
 			</div>
