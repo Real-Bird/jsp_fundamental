@@ -1,3 +1,20 @@
+<div id="map" style="width:100%;height:350px;"></div>
+<p>
+<button onclick="resizeMap()">지도 크기 바꾸기</button> 
+<button onclick="relayout()">relayout 호출하기</button>
+</p>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 사용하세요"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 지도를 표시하는 div 크기를 변경하는 함수입니다
 function resizeMap() {
     var mapContainer = document.getElementById('map');
     mapContainer.style.width = '650px';
@@ -11,3 +28,4 @@ function relayout() {
     // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
     map.relayout();
 }
+</script>
