@@ -1,6 +1,18 @@
 <!-- write.jsp -->
 <%@ page pageEncoding="utf-8"%>
 <%@ include file="../inc/header.jsp"%>
+<%
+	String tempPage = request.getParameter("page");
+	int cPage = 0;
+	if(tempPage == null || tempPage.length() == 0){
+		cPage = 1;
+	}
+	try{
+		cPage = Integer.parseInt(tempPage);
+	}catch(NumberFormatException e){
+		cPage = 1;
+	}
+%>
 <!-- breadcrumb start -->
 <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
@@ -14,7 +26,7 @@
 <div class="container">
 	<!-- col start -->
 	<div class="row">
-		<div class="col-m-12">
+		<div class="col-md-12">
 		<h4>공지사항 작성</h4>
 			<%-- form start --%>
 			<form name="noticeForm" method="post" action="saveDb.jsp">
@@ -35,7 +47,7 @@
 				</div>
 			</form>
 			<div class="text-right">
-				<a class="btn btn-light" href="list.jsp" role="button">목록</a> 
+				<a class="btn btn-light" href="list.jsp?page=<%=cPage %>" role="button">목록</a> 
 				<a class="btn btn-dark" id="saveNotice" role="button">저장</a>
 			</div>
 			<%-- form end --%>
@@ -44,4 +56,11 @@
 	</div>
 	<!-- container end -->
 	</div>
+	<script>
+		$(function(){
+			$('#saveNotice').click(function(){
+				noticeForm.submit();
+			});
+		});
+	</script>
 	<%@ include file="../inc/footer.jsp"%>

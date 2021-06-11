@@ -63,7 +63,7 @@
     <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
-                    <input type="hidden" value="근린공원" id="keyword" size="15" onsubmit="searchPlaces()">
+                    <input type="hidden" value="정신건강복지" id="keyword" size="15" onsubmit="searchPlaces()">
             </div>
         </div>
         <hr>
@@ -73,10 +73,10 @@
 </div>
     </section>
 
-	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f54af8924919de3e88d60eba1ed58b18&amp;libraries=services,clusterer"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f54af8924919de3e88d60eba1ed58b18&amp;libraries=services,clusterer"></script>
 </body>
 <script>
-if (navigator.geolocation) {
+/* if (navigator.geolocation) {
 
 	// GeoLocation을 이용해서 접속 위치를 얻기
 	navigator.geolocation.getCurrentPosition(function getLocation(position) {
@@ -92,16 +92,16 @@ if (navigator.geolocation) {
 		};
 		
 		// 지도를 생성
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		var map = new kakao.maps.Map(mapContainer, mapOption);  */
 
-		/* var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
 	        center: new kakao.maps.LatLng(37.567291412313274, 126.98226358838974), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
 
 	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-	var map = new kakao.maps.Map(mapContainer, mapOption);  */
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
 		
 		// 마우스 휠과 모바일 터치를 이용한 지도 확대, 축소를 막는다
 		map.setZoomable(false);
@@ -112,7 +112,7 @@ if (navigator.geolocation) {
 		// 지도의 우측에 확대 축소 컨트롤을 추가한다
 		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 				
-		var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+		var locPosition = new kakao.maps.LatLng(37.56382996843112, 126.99752940774351), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
         message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
     
         // 마커와 인포윈도우를 표시합니다
@@ -354,7 +354,7 @@ if (navigator.geolocation) {
 		    }
 		}
 
-});
-}
+//});
+//}
 </script>
 </html>

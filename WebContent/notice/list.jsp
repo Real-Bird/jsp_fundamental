@@ -21,8 +21,14 @@
 	cPage = 2 -> 10, 10;
 	cPage = 3 -> 20, 10;
 	*/
-	int displayCount = 3;
-	int pageDisplayCount = 2;
+	int displayCount = 2;
+	int pageDisplayCount = 3;
+	int totalRows = 0;
+	int currentBlock = 0;
+	int totalBlock = 0;
+	int totalPage = 0;
+	int startPage = 0;
+	int endPage = 0;
 	int start = (cPage-1)*displayCount;
 	NoticeDao dao = NoticeDao.getInstance();
 	ArrayList<NoticeDto> list = dao.select(start, displayCount);
@@ -67,7 +73,7 @@
 						<tr>
 							<th scope="row"><%= dto.getNum() %></th>
 							<td><%= dto.getWriter() %></td>
-							<td><a href="view.jsp"><%= dto.getTitle() %></a></td>
+							<td><a href="view.jsp?num=<%= dto.getNum() %>&page=<%=cPage %>>"><%= dto.getTitle() %></a></td>
 							<td><%= dto.getRegdate() %></td>
 						</tr>
 						<%
@@ -88,12 +94,7 @@
 			공지사항 총 개수에 의해서 pagination 개수 결정
 			
 		*/
-			int totalRows = dao.getRows(); //128개 가정
-			int currentBlock = 0;
-			int totalBlock = 0;
-			int totalPage = 0;
-			int startPage = 0;
-			int endPage = 0;
+			totalRows = dao.getRows(); //128개 가정
 			
 			/* if(totalRows % displayCount == 0){
 				totalPage = totalRows/displayCount;
@@ -137,32 +138,21 @@
 				
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
-						<%if(currentBlock == 1){ %>
-						<li class="page-item disabled"><a class="page-link" href="#"
+						<li class="page-item <% if(currentBlock == 1){%>disabled<%}%>"><a class="page-link" href="list.jsp?page=<%= startPage - 1%>"
 							tabindex="-1" aria-disabled="true">이전</a></li>
-						<%}else{ %>
-						<li class="page-item"><a class="page-link" href="list.jsp?page=<%=startPage-1 %>"
-							tabindex="-1" aria-disabled="true">이전</a></li>
-						<%} 
 						
-						for(int i = startPage ; i <=endPage ; i++){ %>
+						<% for(int i = startPage ; i <=endPage ; i++){ %>
 						<li class="page-item"><a class="page-link" href="list.jsp?page=<%= i%>"><%= i %></a></li>
-						<%} 
-						if(totalBlock == currentBlock){
-						%>
-						<li class="page-item disabled"><a class="page-link" href="#">다음</a>
+						<%} %> 
+						<li class="page-item <% if(totalBlock == currentBlock){%>disabled<%}%>"><a class="page-link" href="list.jsp?page=<%= endPage + 1%>">다음</a>
 						</li>
-						<%} else { %>
-						<li class="page-item"><a class="page-link" href="list.jsp?page=<%= endPage + 1%>">다음</a>
-						</li>
-						<%} %>
 					</ul>
 				</nav>
 				<%-- pagination end --%>
 
 				<%-- write button --%>
 				<div class="text-right">
-					<a class="btn btn-light" href="write.jsp" role="button">작성</a>
+					<a class="btn btn-light" href="write.jsp?page=<%=cPage %> role="button">작성</a>
 				</div>
 			</div>
 			<%-- table end --%>

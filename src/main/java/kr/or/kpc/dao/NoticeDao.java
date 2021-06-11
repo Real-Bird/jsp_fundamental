@@ -39,8 +39,8 @@ public class NoticeDao {
 			int index = 1;
 			pstmt.setInt(index++, dto.getNum());
 			pstmt.setString(index++, dto.getWriter());
-			pstmt.setString(index, dto.getTitle());
-			pstmt.setString(index, dto.getContent());
+			pstmt.setString(index++, dto.getTitle());
+			pstmt.setString(index++, dto.getContent());
 
 			pstmt.executeUpdate();
 			success = true;
@@ -192,4 +192,75 @@ public class NoticeDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getMaxNum() {
+		int resultCount = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		con = ConnLocator.getConnect();
+
+		try {
+
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT ifnull(MAX(n_num)+1, 1) ");
+			sql.append("FROM notice ");
+
+			pstmt = con.prepareStatement(sql.toString());
+
+			int index = 1;
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				index = 1;
+				resultCount = rs.getInt(index++);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return resultCount;
+	}
+	
+	public NoticeDto select(int num) {
+		NoticeDto dto = null;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		con = ConnLocator.getConnect();
+
+		try {
+
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT n_num, n_writer, n_title, n_content, date_format(n_regdate, '%Y/%m/%d %h:%i') ");
+			sql.append("FROM notice ");
+			sql.append("WHERE n_num = ? ");
+
+			pstmt = con.prepareStatement(sql.toString());
+
+			int index = 1;
+			pstmt.setInt(index++, num);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				index = 1;
+				num = rs.getInt(index++);
+				String writer = rs.getString(index++);
+				String title = rs.getString(index++);
+				String content = rs.getString(index++);
+				String regdate = rs.getString(index++);
+				dto = new NoticeDto(num, writer, title, content, regdate);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return dto;
+	}
+	
 }
