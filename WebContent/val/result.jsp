@@ -220,6 +220,10 @@ width:960px;
 	color: #777;
 }
 
+#backSurvey a {
+	text-decoration: none;
+}
+
 </style>
 
 </head>
@@ -273,13 +277,12 @@ width:960px;
 						<input type="button" value="맛집" id= "btn6" size="15" onsubmit="searchPlaces()">
 						</span>
 						<span>
-						<button><a class="btn btn-light" href="valCalc.jsp" role="button">다시하기</a></button>
+						<button id="backSurvey"><a class="btn btn-light" href="valCalc.jsp" role="button">다시하기</a></button>
 						</span>
 					</div>
 				</div>
 				<hr>
 		<div class="map_wrap">
-		
 			<div id="map" style="width: 960px; height: 100%; position: relative; overflow: hidden;"></div>
 			<ul id="placesList"></ul>
         <div id="pagination"></div>

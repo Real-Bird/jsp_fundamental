@@ -10,13 +10,28 @@
     	tr {
     		border: 1px solid red;
     	}
+    	
+    	#cap > p {
+    		border: 1px solid black;
+    		width: 960px;
+    		height: 50px;
+    		margin: 0 auto;
+			padding: 30px 0 0 30px;
+			text-align: center;
+    	}
+    	form {
+    		width: 960px;
+    		height: 720px;
+    		margin: 0 auto;
+    	}
+    	
     </style>
 </head>
 <body>
-	<caption>		
-		<div>
+			
+		<div id="cap">
          <p>해당 사항이 없으시면 항목을 비워두세요.</p>
-	</div>
-</caption>
+		</div>
+
     <form id="health02Form" method="post" action="result.jsp"> 
         
