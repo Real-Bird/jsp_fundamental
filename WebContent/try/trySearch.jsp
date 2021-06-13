@@ -144,7 +144,7 @@ response.setContentType("text/html; charset=UTF-8");
 				<div class="option">
 					<div id="searchBtn-box">
 						<span>
-						<input type="button" value="강남구정신건강복지센터" id= "btn1" size="1" onsubmit="searchPlaces()">
+						<button type="button" value="강남구정신건강복지센터" id= "btn1" size="1" onsubmit="searchPlaces()">강남구</button>
 						</span>
 						<span>
 						<input type="button" value="강동구정신건강복지센터" id= "btn2" size="1" onsubmit="searchPlaces()">
