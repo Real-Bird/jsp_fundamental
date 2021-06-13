@@ -671,7 +671,8 @@
         <div class="ac mt20">
         <input type="submit" value="전송">
         </div>  
-        
+        </div> 
+       </form>
         
 <%@ include file="unCheckFunc.jsp" %> 
 <%@ include file="footer.jsp"%>

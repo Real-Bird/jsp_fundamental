@@ -5,7 +5,7 @@
 	<%
 
 	Enumeration<String> radioValues = request.getParameterNames();
-	int sum = 366;
+	int sum = 400;
 	int maxScore = 406;
 	String books = "서점";
 	String cafe = "카페";
@@ -290,5 +290,5 @@ width:960px;
 			
 	</section>
 	</body>
-	<%@ include file="map.jsp" %>
+	<%@ include file="mapjs.jsp" %>
 </html>
