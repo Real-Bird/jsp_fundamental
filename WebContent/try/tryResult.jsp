@@ -5,7 +5,7 @@
 	<%
 
 	Enumeration<String> radioValues = request.getParameterNames();
-	int sum = 400;
+	int sum = 200;
 	int maxScore = 406;
 	String books = "서점";
 	String cafe = "카페";
