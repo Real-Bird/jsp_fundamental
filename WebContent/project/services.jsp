@@ -131,8 +131,11 @@ response.setContentType("text/html; charset=UTF-8");
       
 
    <!-- End Why Us Section -->
+   
+       
+   
    <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-    <div class="container">
+  <div class = "container">
       <div id="maptext" style="color: cadetblue;">
        <br><h2> 서울특별시 심리상담센터</h2> <br><br>
         </div>
@@ -165,18 +168,25 @@ response.setContentType("text/html; charset=UTF-8");
           <button type="button" class="btn btn-outline-primary"style="margin:10px 5px;" value="성동구정신건강복지센터" id="btn23" size="1" onsubmit="searchPlaces()">성동구</button>
           <button type="button" class="btn btn-outline-primary"style="margin:10px 5px;" value="노원구정신건강복지센터" id="btn24" size="1" onsubmit="searchPlaces()">노원구</button>
           <button type="button" class="btn btn-outline-primary"style="margin:10px 5px;" value="서대문구정신건강복지센터" id="btn25" size="1" onsubmit="searchPlaces()">서대문구</button>
-           
-
-         
+           </div>
+           </div>
+           </div>
+    </section>
+<section class="map mt-2">
+      <div class="container-fluid p-0">
+         <div class = "container">
             <div class="map_wrap">
               <div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
               <ul id="placesList"></ul>
             </div>
           </div>  
         </div>
-        </div>
+       
+       
     </section>
-
+    
+            
+      
         <!-- ======= Why Us Section ======= -->
         <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
           <div class="container">
