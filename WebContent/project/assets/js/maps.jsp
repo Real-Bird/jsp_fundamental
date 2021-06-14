@@ -1302,9 +1302,9 @@
 					    bounds = new kakao.maps.LatLngBounds(), 
 					    listStr = '';
 					    
-					    // 검색 결과 목록에 추가된 항목들을 제거합니다
+					 // 검색 결과 목록에 추가된 항목들을 제거합니다
 					    removeAllChildNods(listEl);
-					
+					    
 					    // 지도에 표시되고 있는 마커를 제거합니다
 					    removeMarker();
 					    
@@ -1314,6 +1314,7 @@
 					       
 					        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
 					            marker = addMarker(placePosition, i), 
+					            placeUrl = places[i].place_url,
 					            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
 					
 					        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -1331,6 +1332,12 @@
 					            kakao.maps.event.addListener(marker, 'mouseout', function() {
 					                infowindow.close();
 					            });
+					            
+					            kakao.maps.event.addListener(marker, 'click', function () {
+					            	var position = this.getPosition();
+					            	var url = placeUrl;
+					            	window.open(url, '_blank');
+					            	});
 					
 					            itemEl.onmouseover =  function () {
 					                displayInfowindow(marker, title);
@@ -1339,14 +1346,18 @@
 					            itemEl.onmouseout =  function () {
 					                infowindow.close();
 					            };
+					            
+					            itemEl.onclick =  function () {
+					            	var itemUrl = placeUrl;
+					            	window.open(itemUrl, '_blank');
+					            };
+					            
 					        })(marker, places[i].place_name);
 					
 					        fragment.appendChild(itemEl);
 					    }
-					
-					    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+					 // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
 					    listEl.appendChild(fragment);
-					
 					    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
 					    map.setBounds(bounds);
 					}
@@ -1354,26 +1365,21 @@
 					// 검색결과 항목을 Element로 반환하는 함수입니다
 					function getListItem(index, places) {
 					
-					    var el = document.createElement('li'),
-					    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-					                '<div class="info">' +
-					                '   <h5>' + places.place_name + '</h5>';
+						var el = document.createElement('tr'),
+					    itemStr = '   <td>' + places.place_name + '</td>';
 					
-					    if (places.road_address_name) {
-					        itemStr += '    <span>' + places.road_address_name + '</span>';
-					    } else {
-					        itemStr += '    <span>' +  places.address_name  + '</span>'; 
-					    }
+					   
+					        itemStr += '    <td>' +  places.road_address_name  + '</td>'; 
+					  
 					                 
-					      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-					                '</div>';           
+					      itemStr += '  <td>' + places.phone  + '</td>';                 
 					
 					    el.innerHTML = itemStr;
 					    el.className = 'item';
-					
+						console.log(itemStr);
 					    return el;
 					}
-					
+						
 					// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 					function addMarker(position, idx, title) {
 						
@@ -1419,5 +1425,6 @@
 					        el.removeChild (el.lastChild);
 					    }
 					}
+					
 	}; //onload end
 </script>

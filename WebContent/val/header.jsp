@@ -34,7 +34,7 @@
 <body>
 			
 		<div id="cap">
-         <p>&check;&nbsp;해당 사항이 없으시면 항목을 비워두세요.<br>
+         <p>
          	&check;&nbsp;총 소요 시간은 약 5분입니다.
          </p>
 		</div>

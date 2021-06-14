@@ -216,7 +216,7 @@ response.setContentType("text/html; charset=UTF-8");
 						<input type="button" value="노원구정신건강복지센터" id="btn24" size="1" onsubmit="searchPlaces()">
 						</span>
 						<span>
-						<input type="button" value="서대문구정신건강복지센터" id="btn25" size="1" onsubmit="searchPlaces()">
+						<button type="button" value="서대문구정신건강복지센터" id="btn25" size="1" onsubmit="searchPlaces()">서대문구</button>
 						</span>
 					</div>
 				</div>

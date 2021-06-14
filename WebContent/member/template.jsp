@@ -4,9 +4,8 @@
 	<!-- breadcrumb start -->
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="#">Home</a></li>
-			<li class="breadcrumb-item"><a href="#">Library</a></li>
-			<li class="breadcrumb-item active" aria-current="page">Data</li>
+			<li class="breadcrumb-item"><a href="/index.jsp">홈</a></li>
+			<li class="breadcrumb-item"><a href="#">회원 목록</a></li>
 		</ol>
 	</nav>
 	<!-- breadcrumb end -->

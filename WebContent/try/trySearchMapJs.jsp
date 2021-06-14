@@ -137,7 +137,7 @@
 					    if (status === kakao.maps.services.Status.OK) {
 					
 					        displayPlaces(data);
-					
+							console.log(data);
 					    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 					
 					        alert('검색 결과가 존재하지 않습니다.');
@@ -1272,6 +1272,7 @@
 					    	sort : kakao.maps.services.SortBy.DISTANCE
 					    	}); 
 					}
+					
 					// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 					function placesSearchCB(data, status, pagination) {
 					    if (status === kakao.maps.services.Status.OK) {
@@ -1314,8 +1315,8 @@
 					       
 					        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
 					            marker = addMarker(placePosition, i), 
+					            placeUrl = places[i].place_url,
 					            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-					
 					        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
 					        // LatLngBounds 객체에 좌표를 추가합니다
 					        bounds.extend(placePosition);
@@ -1331,13 +1332,23 @@
 					            kakao.maps.event.addListener(marker, 'mouseout', function() {
 					                infowindow.close();
 					            });
-					
+					            kakao.maps.event.addListener(marker, 'click', function () {
+					            	var position = this.getPosition();
+					            	var url = placeUrl;
+					            	window.open(url, '_blank');
+					            	});
+
+					            	출처: https://juahnpop.tistory.com/258 [Blacklog]
 					            itemEl.onmouseover =  function () {
 					                displayInfowindow(marker, title);
 					            };
 					
 					            itemEl.onmouseout =  function () {
 					                infowindow.close();
+					            };
+					            itemEl.onclick =  function () {
+					            	var itemUrl = placeUrl;
+					            	window.open(itemUrl, '_blank');
 					            };
 					        })(marker, places[i].place_name);
 					
@@ -1368,10 +1379,9 @@
 					                 
 					      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
 					                '</div>';           
-					
 					    el.innerHTML = itemStr;
 					    el.className = 'item';
-					
+					    console.log(itemStr);
 					    return el;
 					}
 					

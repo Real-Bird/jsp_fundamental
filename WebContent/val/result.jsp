@@ -1,32 +1,115 @@
 <%@page import="org.apache.jasper.JasperException"%>
 <%@page import="java.util.Enumeration"%>
 <%@ page pageEncoding="utf-8" %>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 	<%
-
-	Enumeration<String> radioValues = request.getParameterNames();
+	
+	String radioValue1 = request.getParameter("env_1");
+	String radioValue2 = request.getParameter("env_2");
+	String radioValue3 = request.getParameter("env_3");
+	String radioValue4 = request.getParameter("env_4");
+	String radioValue5 = request.getParameter("env_5");
+	String radioValue6 = request.getParameter("env_6");
+	String radioValue7 = request.getParameter("env_7");
+	String radioValue8 = request.getParameter("env_8");
+	String radioValue9 = request.getParameter("env_9");
+	String radioValue10 = request.getParameter("env_10");
+	String radioValue11 = request.getParameter("env_11");
+	String radioValue12 = request.getParameter("env_12");
+	String radioValue13 = request.getParameter("env_13");
+	String radioValue14 = request.getParameter("env_14");
+	String radioValue15 = request.getParameter("env_15");
+	String radioValue16 = request.getParameter("env_16");
+	String radioValue17 = request.getParameter("env_17");
+	String radioValue18 = request.getParameter("env_18");
+	String radioValue19 = request.getParameter("env_19");
+ 	String radioValue20 = request.getParameter("env_20");
+ 	String radioValue21 = request.getParameter("env_21");
+	String radioValue22 = request.getParameter("env_22");
+	String radioValue23 = request.getParameter("env_23");
+	String radioValue24 = request.getParameter("env_24");
+	String radioValue25 = request.getParameter("env_25");
+	String radioValue26 = request.getParameter("env_26");
+	String radioValue27 = request.getParameter("env_27");
+	String radioValue28 = request.getParameter("env_28");
+	String radioValue29 = request.getParameter("env_29");
+	String radioValue30 = request.getParameter("env_30");
+	String radioValue31 = request.getParameter("env_31");
+	String radioValue32 = request.getParameter("env_32");
+	String radioValue33 = request.getParameter("env_33");
+	String radioValue34 = request.getParameter("env_34");
+	String radioValue35 = request.getParameter("env_35");
+	String radioValue36 = request.getParameter("env_36");
+	String radioValue37 = request.getParameter("env_37");
+	String radioValue38 = request.getParameter("env_38");
+	String radioValue39 = request.getParameter("env_39");
+	String radioValue40 = request.getParameter("env_40");
+	String radioValue41 = request.getParameter("env_41");
+	String radioValue42 = request.getParameter("env_42");
+	String radioValue43 = request.getParameter("env_43");
+	String radioValue44 = request.getParameter("env_44");
+	String radioValue45 = request.getParameter("env_45");
+	String radioValue46 = request.getParameter("env_46");
+	String radioValue47 = request.getParameter("env_47");
+	String radioValue48 = request.getParameter("env_48");
+	String radioValue49 = request.getParameter("env_49");
+	String radioValue50 = request.getParameter("env_50");
+	String radioValue51 = request.getParameter("env_51");
+	String radioValue52 = request.getParameter("env_52");
+	String radioValue53 = request.getParameter("env_53");
+	String radioValue54 = request.getParameter("env_54");
+	String radioValue55 = request.getParameter("env_55");
+	String radioValue56 = request.getParameter("env_56");
+	String radioValue57 = request.getParameter("env_57");
+	String radioValue58 = request.getParameter("env_58");
+	
+	
+	String[] radioValues = {radioValue1,radioValue2,radioValue3,radioValue4,radioValue5,radioValue6,radioValue7,radioValue8,radioValue9,radioValue10,
+			radioValue11,radioValue12,radioValue13,radioValue14,radioValue15,radioValue16,radioValue17,radioValue18,radioValue19,radioValue20,
+			radioValue21,radioValue22,radioValue23,radioValue24,radioValue25,radioValue26,radioValue27,radioValue28,radioValue29,radioValue30,
+			radioValue31,radioValue32,radioValue33,radioValue34,radioValue35,radioValue36,radioValue37,radioValue38,radioValue39,radioValue40,
+			radioValue41,radioValue42,radioValue43,radioValue44,radioValue45,radioValue46,radioValue47,radioValue48,radioValue49,radioValue50,
+			radioValue51,radioValue52,radioValue53,radioValue54,radioValue55,radioValue56,radioValue57,radioValue58
+	};
 	int sum = 0;
-	int maxScore = 406;
+	int maxScore = 406 / 58;
+	int count = 0;
 	String books = "서점";
 	String cafe = "카페";
 	String park = "근린공원";
 	String theater = "영화관";
 	String mentalCenter = "정신건강복지센터";
+	
 	try{
-		while( radioValues.hasMoreElements() ){
-	  		String radioValue = (String)radioValues.nextElement();
-	  		int point = Integer.parseInt(request.getParameter(radioValue));
-	  		sum += point;
-	 	}
+		
+		for(int i=0; i < radioValues.length; i++){
+				int point = Integer.parseInt(radioValues[i]);
+				if(point != 0){
+					count++;
+				}
+				sum += point;
+		}
+
+		if(count == 0){
+		
+		%>
+			
+			<script>
+				alert('항목을 체크해주세요');
+				history.back(-1);
+			</script>
+			
+		<%}
+		sum /= count;
 	 %>
 <%
 response.setContentType("text/html; charset=UTF-8");
 %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+
 <title>Time Wizard Map</title>
 <style type="text/css">
 body{
@@ -101,8 +184,8 @@ width:960px;
 	}catch(Exception e){
 	%>
 		<script>
-			alert('알 수 없는 요청입니다.');
-			location.history(-1);
+			
+			
 		</script>
 	<%
 	}
@@ -114,9 +197,9 @@ width:960px;
 				<div class="option">
 					<div id="searchBtn-box">
 						<span>
-						<input type="hidden" value="<%if(sum < maxScore*0.75){%>근린공원<%} else if(sum >= maxScore*0.75 && sum < maxScore*0.85){ %>서점
-						<%}else if(sum >= maxScore*0.85 && sum < maxScore*0.90) {%>영화관<%} else if(sum >= maxScore*0.9 && sum < maxScore*0.95){ %>	
-						카페<%} else if(sum >= maxScore*0.95) { %>정신건강복지센터<%} %>" id= "btn2" size="15" onsubmit="searchPlaces()">
+						<input type="hidden" value="<%if(sum < maxScore*75){%>근린공원<%} else if(sum >= maxScore*75 && sum < maxScore*85){ %>서점
+						<%}else if(sum >= maxScore*85 && sum < maxScore*90) {%>영화관<%} else if(sum >= maxScore*9 && sum < maxScore*95){ %>	
+						카페<%} else if(sum >= maxScore*95) { %>정신건강복지센터<%} %>" id= "btn2" size="15" onsubmit="searchPlaces()">
 						</span>
 						<span>
 						<button id="backSurvey"><a class="btn btn-light" href="valCalc.jsp" role="button">다시하기</a></button>
