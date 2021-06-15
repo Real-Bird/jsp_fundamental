@@ -180,14 +180,7 @@ width:960px;
 
 </head>
 		<body>
-		<div>
-			<p>0 ~ <%= df.format(maxScore*0.75) %> : 가벼운 스트레스 상태</p>
-			<p><%= df.format(maxScore*0.75) %> ~ <%= df.format(maxScore*0.85) %> : 중간 스트레스 상태</p>
-			<p><%= df.format(maxScore*0.85) %> ~ <%= df.format(maxScore*0.9) %> : 많은 스트레스 상태</p>
-			<p><%= df.format(maxScore*0.9) %> ~ <%= df.format(maxScore*0.95) %> : 굉장한 스트레스 상태</p>
-			<p><%= df.format(maxScore*0.95) %> ~ <%= maxScore %> : 극도의 스트레스 상태</p>
-		</div>
-		<div>
+			<div>
 	<% if(sum < maxScore*0.75){ %>
 		<p> 당신의 스트레스 점수는 <%=df.format(sum) %>점입니다.</p>
 		<p> <strong><%=park%></strong>에서 산책하며 맞는 바람에 스트레스를 실려보내면 어떨까요?</p>
@@ -205,6 +198,14 @@ width:960px;
 		<p> <strong><%=mentalCenter%></strong> 상담을 추천드립니다.</p>
 	<%}%>
 	</div>
+		<div>
+			<p>0 ~ <%= df.format(maxScore*0.75) %> : 가벼운 스트레스 상태</p>
+			<p><%= df.format(maxScore*0.75) %> ~ <%= df.format(maxScore*0.85) %> : 중간 스트레스 상태</p>
+			<p><%= df.format(maxScore*0.85) %> ~ <%= df.format(maxScore*0.9) %> : 많은 스트레스 상태</p>
+			<p><%= df.format(maxScore*0.9) %> ~ <%= df.format(maxScore*0.95) %> : 굉장한 스트레스 상태</p>
+			<p><%= df.format(maxScore*0.95) %> ~ <%= maxScore %> : 극도의 스트레스 상태</p>
+		</div>
+	
 	
 	
 	<section>
@@ -219,7 +220,7 @@ width:960px;
 						카페<%} else if(sum >= maxScore*0.95) { %>정신건강복지센터<%} %>" id= "btn2" size="15" onsubmit="searchPlaces()">
 						</span>
 						<span>
-						<button id="backSurvey"><a class="btn btn-light" href="about.jsp" role="button">다시하기</a></button>
+						<button id="backSurvey"><a class="btn btn-light" href="servey.jsp" role="button">다시하기</a></button>
 						</span>
 					</div>
 				</div>
@@ -249,7 +250,7 @@ width:960px;
     
 
   </main><!-- End #main -->
-	<%@ include file="assets/js/resultMapJs.jsp" %>
+  <%@ include file="assets/js/resultMapJs.jsp" %>
     <%@include file="footer.jsp" %>
 
 

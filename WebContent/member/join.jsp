@@ -66,11 +66,121 @@
 	<!-- container end -->
 	<script>
 	$(function(){
-		let email = $('#email').val();
-		let pwd = $('#pwd').val();
-		let repwd = $('#repwd').val();
-		let name = $('#name').val();
+		$('#email').keyup(function(){
+			$('#email').removeClass('is-invalid');
+			if(validateEmail($('#email').val())){
+				$.ajax({
+					type: 'get',
+					url: 'checkEmailAjax.jsp?email=' + $('#email').val(),
+					dataType: 'json',
+					error: function(){
+						alert('error');
+					},
+					success : function(json){
+						//json -> {"result":"ok"}, {"result": "fail"}
+						if(json.result == "ok"){
+							$('#email').removeClass('is-invalid');
+							$('#email').addClass('is-valid');
+							success = true;
+						}else{
+							$('#errorEmail').text('이미 등록된 이메일입니다.');
+							$('#email').addClass('is-invalid');
+							$('#email').removeClass('is-valid');
+							success = false;
+						}
+					}
+				});
+			}
+		});
 		
+			let success = false;
+		$('#saveCustomer').click(function(e){
+			e.preventDefault();
+			let email = $('#email').val();
+			let pwd = $('#pwd').val();
+			let repwd = $('#repwd').val();
+			let name = $('#name').val();
+			e.preventDefault();
+			if(email == ""){
+				$('#email').addClass('is-invalid');
+			} else {
+				$('#email').removeClass('is-invalid');
+				if(validateEmail($('#email').val())){
+					$.ajax({
+						type: 'get',
+						url: 'checkEmailAjax.jsp?email=' + $('#email').val(),
+						dataType: 'json',
+						error: function(){
+							alert('error');
+						},
+						success : function(json){
+							//json -> {"result":"ok"}, {"result": "fail"}
+							if(json.result == "ok"){
+								$('#email').removeClass('is-invalid');
+								$('#email').addClass('is-valid');
+								success = true;
+							}else{
+								$('#errorEmail').text('이미 등록된 이메일입니다.');
+								$('#email').addClass('is-invalid');
+								$('#email').removeClass('is-valid');
+							}
+						}
+					});
+						
+				}else{
+					$('#errorEmail').text('정상적인 이메일 주소가 아닙니다.');
+					$('#email').addClass('is-invalid');
+				}
+				
+				if(pwd==""){
+					$('#errorPwd').text('비밀번호를 입력하세요');
+					$('#pwd').addClass('is-invalid');
+				}else{
+					$('#pwd').removeClass('is-invalid');
+					$('#pwd').addClass('is-valid');
+				}
+				
+				if(repwd==""){
+					$('#errorRePwd').text('비밀번호를 입력하세요');
+					$('#repwd').addClass('is-invalid');
+				}else{
+					$('#repwd').removeClass('is-invalid');
+					$('#repwd').addClass('is-valid');
+				}
+				if(pwd!=repwd){
+					$('#errorRepwd').text('비밀번호가 같지 않습니다.');
+					$('#repwd').addClass('is-invalid');
+				}else{
+					$('#repwd').removeClass('is-invalid');
+					$('#repwd').addClass('is-valid');
+				}
+				if(email==""){
+					$('#email').focus()
+					return;
+				}
+				if(pwd==""){
+					$('#pwd').focus()
+					return;
+				}
+				if(repwd==""){
+					$('#repwd').focus()
+					return;
+				}
+				if(name==""){
+					$('#name').focus()
+					return;
+				}
+				if(success){
+					f.submit();
+				}
+			}
+				
+		});//click end
+		function validateEmail(email) {
+            var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+            return re.test(email);
+    }
+
 	});
 	</script>
 <%@ include file="../inc/footer.jsp"%>

@@ -1,11 +1,37 @@
-<%@page import="org.apache.jasper.JasperException"%>
-<%@page import="java.util.Enumeration"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@ page pageEncoding="utf-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-	<%
+<%@include file="../project/header.jsp" %>
+
+
+
+<body>
+
+  
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+        
+          <ol>
+            <li><a href="about.jsp">심리검사하기</a></li>
+            <li><a href="about2.jsp">결과보기</a></li>
+            
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= About Section ======= -->
+    <section class="about" data-aos="fade-up">
+      <div class="container">
+
+        <h1>심리검사 결과 페이지입니다</h1>
+        <%
 	
 	String radioValue1 = request.getParameter("env_1");
 	String radioValue2 = request.getParameter("env_2");
@@ -74,9 +100,10 @@
 			radioValue41,radioValue42,radioValue43,radioValue44,radioValue45,radioValue46,radioValue47,radioValue48,radioValue49,radioValue50,
 			radioValue51,radioValue52,radioValue53,radioValue54,radioValue55,radioValue56,radioValue57,radioValue58
 	};
-	int sum = 0;
+	int sumScore = 0;
 	int maxScore = 406 / 58;
 	int count = 0;
+	DecimalFormat df = new DecimalFormat("0.00");
 	String books = "서점";
 	String cafe = "카페";
 	String park = "근린공원";
@@ -90,27 +117,24 @@
 				if(point != 0){
 					count++;
 				}
-				sum += point;
+				sumScore += point;
 		}
-
 		if(count == 0){
 		
 		%>
-			
 			<script>
 				alert('항목을 체크해주세요');
 				history.back(-1);
 			</script>
-			
 		<%}
-		sum /= count;
+		double sum = (double) sumScore / count;
+		
 	 %>
 <%
 response.setContentType("text/html; charset=UTF-8");
 %>
 
 
-<title>Time Wizard Map</title>
 <style type="text/css">
 body{
 width:960px;
@@ -157,39 +181,32 @@ width:960px;
 </head>
 		<body>
 		<div>
-			<p>0 ~ 303 : 가벼운 스트레스 상태</p>
-			<p>304 ~ 344 : 중간 스트레스 상태</p>
-			<p>345 ~ 364 : 많은 스트레스 상태</p>
-			<p>365 ~ 384 : 굉장한 스트레스 상태</p>
-			<p>385 ~ 406 : 극도의 스트레스 상태</p>
+			<p>0 ~ <%= df.format(maxScore*0.75) %> : 가벼운 스트레스 상태</p>
+			<p><%= df.format(maxScore*0.75) %> ~ <%= df.format(maxScore*0.85) %> : 중간 스트레스 상태</p>
+			<p><%= df.format(maxScore*0.85) %> ~ <%= df.format(maxScore*0.9) %> : 많은 스트레스 상태</p>
+			<p><%= df.format(maxScore*0.9) %> ~ <%= df.format(maxScore*0.95) %> : 굉장한 스트레스 상태</p>
+			<p><%= df.format(maxScore*0.95) %> ~ <%= maxScore %> : 극도의 스트레스 상태</p>
 		</div>
-		
+		<div>
 	<% if(sum < maxScore*0.75){ %>
-		<p> 당신의 스트레스 점수는 <%=sum %>점입니다.</p>
+		<p> 당신의 스트레스 점수는 <%=df.format(sum) %>점입니다.</p>
 		<p> <strong><%=park%></strong>에서 산책하며 맞는 바람에 스트레스를 실려보내면 어떨까요?</p>
 	<%} else if(sum >= maxScore*0.75 && sum < maxScore*0.85){ %>
-	   	<p> 당신의 스트레스 점수는 <%=sum %>점입니다.</p>
+	   	<p> 당신의 스트레스 점수는 <%=df.format(sum) %>점입니다.</p>
 		<p> <strong><%=books%></strong>에서 책 한 권의 여유……어떠세요?</p> 	
 	<%} else if(sum >= maxScore*0.85 && sum < maxScore*0.9){ %>	
-		<p> 당신의 스트레스 점수는 <%=sum %>점입니다.</p>
+		<p> 당신의 스트레스 점수는 <%=df.format(sum) %>점입니다.</p>
 		<p> <strong><%=theater%></strong>에서 멍때리는 것도 낭만있죠?</p>
 	<%} else if(sum >= maxScore*0.9 && sum < maxScore*0.95){ %>	
-		<p> 당신의 스트레스 점수는 <%=sum %>점입니다.</p>
+		<p> 당신의 스트레스 점수는 <%=df.format(sum) %>점입니다.</p>
 		<p> <strong><%=cafe%></strong>에서 음악감상은 마음의 여유를 찾아줄 거예요.</p>
 	<%}	else if(sum >= maxScore*0.95){ %>
-		<p> 당신의 스트레스 점수는 <%=sum %>점입니다.</p>
+		<p> 당신의 스트레스 점수는 <%=df.format(sum) %>점입니다.</p>
 		<p> <strong><%=mentalCenter%></strong> 상담을 추천드립니다.</p>
-	<%}
-		
-	}catch(Exception e){
-	%>
-		<script>
-			
-			
-		</script>
-	<%
-	}
-	%>
+	<%}%>
+	</div>
+	
+	
 	<section>
 		<div id="map_header">
 			<h2>Mapping</h2>
@@ -197,12 +214,12 @@ width:960px;
 				<div class="option">
 					<div id="searchBtn-box">
 						<span>
-						<input type="hidden" value="<%if(sum < maxScore*75){%>근린공원<%} else if(sum >= maxScore*75 && sum < maxScore*85){ %>서점
-						<%}else if(sum >= maxScore*85 && sum < maxScore*90) {%>영화관<%} else if(sum >= maxScore*9 && sum < maxScore*95){ %>	
-						카페<%} else if(sum >= maxScore*95) { %>정신건강복지센터<%} %>" id= "btn2" size="15" onsubmit="searchPlaces()">
+						<input type="hidden" value="<%if(sum < maxScore*0.75){%>근린공원<%} else if(sum >= maxScore*0.75 && sum < maxScore*0.85){ %>서점
+						<%}else if(sum >= maxScore*0.85 && sum < maxScore*0.90) {%>영화관<%} else if(sum >= maxScore*0.9 && sum < maxScore*0.95){ %>	
+						카페<%} else if(sum >= maxScore*0.95) { %>정신건강복지센터<%} %>" id= "btn2" size="15" onsubmit="searchPlaces()">
 						</span>
 						<span>
-						<button id="backSurvey"><a class="btn btn-light" href="valCalc.jsp" role="button">다시하기</a></button>
+						<button id="backSurvey"><a class="btn btn-light" href="about.jsp" role="button">다시하기</a></button>
 						</span>
 					</div>
 				</div>
@@ -215,8 +232,26 @@ width:960px;
         <div id="pagination"></div>
 				</div>
     </div>
-			
+			<%	
+	}catch(Exception e){
+	%>
+		
+	<%
+	}
+	%>
 	</section>
 	</body>
-	<%@ include file="map.jsp" %>
+        
+      </div>
+    </section><!-- End About Section -->
+
+   
+    
+
+  </main><!-- End #main -->
+  <%@ include file="map.jsp" %>
+    <%@include file="../project/footer.jsp" %>
+
+
 </html>
+
