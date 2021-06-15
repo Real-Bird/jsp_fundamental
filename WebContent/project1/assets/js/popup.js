@@ -3,7 +3,7 @@ function pop() {
       };
       
       
-      /*
+   
       // 쿠키 생성
       function setCookie( name, value, expiredays ) {  // 쿠키저장
          const todayDate = new Date();  //date객체 생성 후 변수에 저장
@@ -31,4 +31,3 @@ function pop() {
       }
 
  
-      */
