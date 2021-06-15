@@ -2,9 +2,7 @@
 <%@ page pageEncoding="utf-8" %>
 <%@include file="../header.jsp" %>
 
-<style>
 
-</style>
 
 <body>
 
@@ -244,7 +242,6 @@ response.setContentType("text/html; charset=UTF-8");
              
            <!-- End blog entry -->
 	</div>
-	</div>
 	
 	  <!-- ======= About Section ======= -->
  
@@ -294,15 +291,15 @@ response.setContentType("text/html; charset=UTF-8");
 						
 					</div>
 				</div>
-				
+				</section>
 		<div class="map_wrap">
-			<div id="map" style="width: 960px; height: 100%; position: relative; overflow: hidden;margin : 0 auto; "></div>
+			<div id="map" style="width: 960px; height: 100%; position: relative; overflow: hidden;margin:0 auto; padding:0 auto;""></div>
 		<div id="menu_wrap" class="bg_white">
 			<hr>
-			<ul id="placesList"></ul>
+			<ul id="placesList" ></ul>
         <div id="pagination"></div>
+        </div>
 				</div>
-    </div>
 			<%	
 	}catch(Exception e){
 	%>
@@ -310,10 +307,8 @@ response.setContentType("text/html; charset=UTF-8");
 	<%
 	}
 	%>
-	</section>
+	
         
-      </div>
-    </section>
     <!-- End About Section -->
 
 				
