@@ -1,14 +1,13 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@ page pageEncoding="utf-8" %>
-<%@include file="../header.jsp" %>
-
+<%@include file="header.jsp" %>
 
 
 <body>
 
   
 
-  <main id="main">
+  
 
     <!-- ======= About Us Section ======= -->
     <section class="breadcrumbs">
@@ -29,7 +28,7 @@
 
     <!-- ======= About Section ======= -->
  
-
+<main id="main">
 		 <section class="blog" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
               <div class="container">
                 
@@ -270,7 +269,7 @@ response.setContentType("text/html; charset=UTF-8");
                   </div>
                   </div>
               </section>
-                  
+        
               
               
               
@@ -292,6 +291,7 @@ response.setContentType("text/html; charset=UTF-8");
 					</div>
 				</div>
 				</section>
+				
 		<div class="map_wrap">
 			<div id="map" style="width: 960px; height: 100%; position: relative; overflow: hidden;margin:0 auto; padding:0 auto;""></div>
 		<div id="menu_wrap" class="bg_white">
@@ -311,13 +311,13 @@ response.setContentType("text/html; charset=UTF-8");
         
     <!-- End About Section -->
 
-				
+				</main><!-- End #main -->          
     
 
-  </main><!-- End #main -->
+  
 	</body>
   <%@ include file="resultMapJs.jsp" %>
-    <%@include file="../footer.jsp" %>
+    <%@include file="footer.jsp" %>
 
 
 

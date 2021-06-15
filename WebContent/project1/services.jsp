@@ -7,7 +7,7 @@ request.setCharacterEncoding("UTF-8");
 <%
 response.setContentType("text/html; charset=UTF-8");
 %>
-<%@ include file="../header.jsp" %>
+<%@ include file="header.jsp" %>
 
   <main id="main">
 
@@ -186,4 +186,4 @@ response.setContentType("text/html; charset=UTF-8");
 
   
     <%@ include file="mapMainJs.jsp" %>
- <%@ include file="../footer.jsp" %>
+ <%@ include file="footer.jsp" %>
