@@ -31,7 +31,6 @@ public class MaincontDao {
 			StringBuilder sql = new StringBuilder();
 			sql.append("INSERT INTO maincont(m_num, m_writer, m_title, m_content, m_like, m_regdate) ");
 			sql.append("VALUES(?, (select * from anonymous order by rand() limit 1), ?, ?, ?, NOW()) ");
-			sql.append("VALUES(?, (select * from anonymous order by rand() limit 1), ?, ?, ?, NOW())										");
 
 			pstmt = con.prepareStatement(sql.toString());
 			int index = 1;
