@@ -41,12 +41,18 @@ window.addEventListener('load', function() {
 <body onload="javascript:pop();">
 	<main id="main">
 	<!-- ======= Our Portfolio Section ======= -->
-  	<nav aria-label="breadcrumb">
+  	 <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="index.html">Story</a></li>
 	    <li class="breadcrumb-item"><a href="community.jsp">Community</a></li>
 	 </ol>
-	</nav>
+	</div>
+
+      </div>
+    </section>
 	
 	
 	
