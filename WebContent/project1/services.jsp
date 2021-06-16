@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -7,7 +7,6 @@ request.setCharacterEncoding("UTF-8");
 <%
 response.setContentType("text/html; charset=UTF-8");
 %>
-<%@ include file="header.jsp" %>
 
   <main id="main">
 
@@ -67,7 +66,7 @@ response.setContentType("text/html; charset=UTF-8");
                   
                   </div>
                 
-                    <input type="button" id="111" value="일상 스트레스 검사" style=" background-color: white;
+                    <input type="button" id="111" value="서울특별시 정신건강복지센터" style=" background-color: white;
                     width: 400px;
                     height: 70px;
                     border: solid 3px white;
@@ -81,10 +80,12 @@ response.setContentType("text/html; charset=UTF-8");
                    </div>
                 
                 
-                    <div id="cap" style="color: red; padding: 10px 30px; margin: 0px 30px ;">
-                    <div><p>
-                        &check;&nbsp;총 소요 시간은 약 5분입니다.
-                    </p></div>
+                    <div id="cap" style=" padding: 10px 30px; margin: 0px 30px ;">
+                    <div>
+                        <p>&check;&nbsp;버튼을 누르면 해당 구의 정신건강복지센터를 표시합니다.</p>
+                        <p>&check;&nbsp;마커를 누르면 카카오맵 안내 페이지로 이동합니다.</p>
+                    </div>
+                    </div>
                     </div>
                     </div>
                   </div>

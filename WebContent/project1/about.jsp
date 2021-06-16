@@ -1,5 +1,5 @@
 <%@ page pageEncoding="utf-8" %>
-<%@include file="../header.jsp" %>
+<%@include file="header.jsp" %>
 
 <style>
 table tbody {
@@ -238,7 +238,7 @@ tbody tr td.ac{
 					          </tr>
 					          
 					          <tr> 
-					           <th scope="row" >8. 기다리던 사람한테서 연락이 없었다.</th> 
+					           <th scope="row" >8. 누군가 허락 없이 물건을 빌려갔다.</th> 
 						           <td style="text-align: center; border: solid 1px lightgray;">
 						           <label for="env_8_never"><input type="radio" name="env_8" id="env_8_never" value="1" title="전혀 받지 않았다">1</label>
 						           <label for="env_8_slightly"> <input type="radio" name="env_8" id="env_8_bit" value="2" title="아주 약간 받았다">2</label>
@@ -984,7 +984,7 @@ tbody tr td.ac{
 
   </main><!-- End #main -->
 
-    <%@include file="../footer.jsp" %>
+    <%@include file="footer.jsp" %>
 
 
 </html>

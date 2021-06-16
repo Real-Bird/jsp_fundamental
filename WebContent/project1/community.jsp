@@ -1,27 +1,37 @@
-<%-- community.jsp --%>
-<%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="mind.dto.MaincontDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="mind.dao.MaincontDao"%>
-<%@page import="mind.dto.MaincontDto"%>
 <%@ page pageEncoding="utf-8" %>
+<%@include file="header.jsp" %>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-<%@include file="../header.jsp" %>
+
 <style type="text/css">
-   .card img {
-      width: 420px;
-      height: 420px; 
+   .card-body { 
+     padding: 0;
+      
+   }
+   .card-title  {
+   		background-color: black;
+		font-family: 'Nanum Pen Script';
+		font-size: 25px; 
+		margin: 0 0 10px 0;
+		height:40px; 
+		text-align: center;
+		color: white;
+		
+   }
+   .card-text { 
+   		font-family: 'Nanum Pen Script';
+   		font-size: 20px; 
+		padding: 0 15px 10px 15px;
+		color: black;
    }
    
-   .card-footer img{
-      height: 20px;
-   }
-   
-   #likeCnt {
-      font-size: 10pt;
+   .card-footer{
+		font-size: 'Noto Sans KR'; 
    }
    
    .dropdown {
@@ -29,11 +39,51 @@
       display: inline;
    }
    
-   .card-body .notice{
+   .notice{
       font-size: 15px;
    }
-</style>
+   
+   #footer{
+   		
+   }
+   
+   .img-fluid {
+   	padding: 0 10px;
+   }
+   
+   .profile {
+   		width: 20px;
+   }
+   
+   .nick {
+   	font-family: 'Nanum Pen Script';
+   	padding: 5px 0 0 10px;
+   }
+   
+   .foot{
+   	padding: 0 10px;
+   }
 
+</style>
+ 
+  <main id="main">
+    <!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <ol>
+            <li><a href="index.html">HOME</a></li>
+            <li>cummunity</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Our Portfolio Section -->
+
+
+
+
+<!--게시판 start-->
 <%
    String tempPage = request.getParameter("page");
    int cPage = 0;
@@ -58,99 +108,98 @@
    
 %>
 
-
-<div class="card-body">
-  <p class="notice"> 24시간 뒤에 글이 사라집니다. 이곳에 고민을 털어놓으세요.</p>
-</div>
- 
-<!-- card start -->
-<div class="card-group">
-   <%
-      if(list.size() != 0){
-         for(MaincontDto dto : list){
-            int regDay = Integer.parseInt(dto.getRegdate()); //월일시분 6131323
-            int regHour = Integer.parseInt(dto.getRegdate().substring(4,6)); //H
-            int curHour = Integer.parseInt(to.substring(4,6));
-            
-            int regDate = Integer.parseInt(dto.getRegdate().substring(2,4)); //D 
-            int curDate = Integer.parseInt(to.substring(2,4));
-
-            int hiddenTime = 0;
-            
-            //현재<=(등록시간+24)
-            if(hour <= regDay ){
-               if(regHour>=curHour){ //등록시간>=현재시간
-                  hiddenTime = (regHour+24)-(curHour+24);
-                  if(regDate-1==curDate && hiddenTime==0){ 
-                     hiddenTime = regHour+1; 
-                  }
-                  if(hiddenTime >= 1 ){
-   %>
-            <%--남은시간 1시간 이상일 때 --%>
-            <div class="row row-cols-1 row-cols-md-1">
-                <div class="col mb-4">
-                     <img src="../../img/community/img1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title"><%=dto.getTitle() %></h5>
-                        <p class="card-text"><%=dto.getContent() %></p>
-                        </div>
-                        
-                        <div class="card-footer">
-                           <div>
-                              <small class="text-muted">지금까지 <%=dto.getNum() %>번째 고민글</small> 
-                           </div>
-                           <div class="dropdown">
-                              <small class="text-muted">
-                                 사라지기 <%=hiddenTime %>시간 전
-                              </small>
-                           </div>
-                        </div>
-                     </div>
-               </div>
-      <%
+    <!-- ======= Portfolio Section ======= -->
+    <main id="main" >
+    <section class="portfolio" >
+      <div class="container" style="height:170vh"> 
+		<p class="notice" align="center"><img src="../../img/community/crescent-moon.png" style="width:20px;"> 24시간 뒤에 글이 사라집니다.  함께 마음의 짐을 덜어내요. <img src="../../img/community/crescent-moon.png" style="width:20px;"></p> 
+		<div class="text-right">
+		<a class="btn btn-outline-secondary" href="write.jsp" role="button" >나도 고민버리기</a>
+		</div>
+		<div class="row" data-aos="fade-up" data-aos-easing="ease-in-out" > </div>
+		
+	<!-- card start -->
+		<%--남은시간 1시간 이상일 때 --%>
+		<%
+	      if(list.size() != 0){	      
+	         for(MaincontDto dto : list){%>
+	         <div class="col-md-4 shadow-sm rounded" style="float:left;  border: 1px solid black; padding: 0; margin-top: 50px;"> 
+	         <%
+	            int regDay = Integer.parseInt(dto.getRegdate()); //월일시분 6131323
+	            int regHour = Integer.parseInt(dto.getRegdate().substring(4,6)); //H
+	            int curHour = Integer.parseInt(to.substring(4,6));
+	            
+	            int regDate = Integer.parseInt(dto.getRegdate().substring(2,4)); //D 
+	            int curDate = Integer.parseInt(to.substring(2,4)); 
+	
+	            int hiddenTime = 0;
+	            System.out.println(regHour);
+	            System.out.println(curHour);
+	            //현재<=(등록시간+24)
+	            if(hour <= regDay ){
+	               if(regHour>=curHour){ //등록시간>=현재시간
+	                  hiddenTime = (regHour+24)-(curHour+24);
+	                  if(regDate-1==curDate && hiddenTime==0){ 
+	                     hiddenTime = regHour+1; 
+	                  }
+	                  if(hiddenTime >= 1 ){
+	   %> 
+								<div class="card-body">
+									<h5 class="card-title"><%=dto.getTitle() %></h5>
+									<img src="../../img/community/img1.jpg" class="img-fluid" alt="...">
+									<div>
+									<p class="nick">
+										<img src="../../img/community/profile.png" class="profile">
+										<%=dto.getWriter() %>
+									</p>
+									<p class="card-text"><%=dto.getContent() %></p>
+									</div>
+									<div class="foot">
+										<small class="text-muted">지금까지 <%=dto.getNum() %>번째 고민글</small>
+										<div class="dropdown"><small class="text-muted"> 사라지기 <%=hiddenTime %>시간 전</small></div>
+									</div>
+								</div> 
+							
+				
+		<%
                   }// end of if%>
       <%      }else{
-                  hiddenTime = (regHour+24)-curHour;
+                  hiddenTime = (regHour+24)-curHour; 
       
                   if(hiddenTime >= 1 ){ 
       %>
-               <div class="row row-cols-1 row-cols-md-1">
-                <div class="col mb-4">
-                  <div class="card" >
-                     <img src="../../img/community/img1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title"><%=dto.getTitle() %></h5>
-                        <p class="card-text"><%=dto.getContent() %></p>
-                        </div>
-                        <div class="card-footer">
-                           <div>
-                              <small class="text-muted">지금까지 <%=dto.getNum() %>번째 고민글</small> 
-                           </div>
-                           <div class="dropdown">
-                              <small class="text-muted">
-                                 사라지기 <%=hiddenTime %>시간 전
-                              </small>
-                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                 <button class="dropdown-item" type="button">수정하기</button>
-                                 <button class="dropdown-item" type="button">삭제하기</button>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-      <%
+								<div class="card-body">
+									<h5 class="card-title"><%=dto.getTitle() %></h5>
+									<img src="../../img/community/img1.jpg" class="img-fluid" alt="...">
+									<div>
+									<p class="nick">
+										<img src="../../img/community/profile.png" class="profile">
+										<%=dto.getWriter() %>
+									</p>
+									<p class="card-text"><%=dto.getContent() %></p>
+									</div>
+									<div class="foot">
+										<small class="text-muted">지금까지 <%=dto.getNum() %>번째 고민글</small>
+										<div class="dropdown"><small class="text-muted"> 사라지기 <%=hiddenTime %>시간 전</small></div>
+									</div>
+								</div> 
+ <%	
                   }//if end
                }//regDay<hour end
-            }//hour <= 현재-24<=등록시간 end
-      }//for end
-   }else{ %>
+            }//hour <= 현재-24<=등록시간 end%>
+	         </div>
+<%      }//for end %>
+		
+<%   }else{ %>
+	         
       <div class="card-body">등록된 글이 없습니다.</div>
    <%} %>
+	<!-- card end -->	
+
 </div>
-<!-- card end -->
+</section>
+
+
 
 
 <%-- pagination start --%>
@@ -186,8 +235,7 @@
       endPage = totalPage;
    }
    %>
-   
-   <!-- pagination start -->
+  
    <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
       <%if(currentBlock==1){ %>
@@ -196,7 +244,7 @@
          </li>
          <%}else{ %>
          <li class="page-item">
-            <a class="page-link" href="community.jsp?page=<%=startPage-1%>"tabindex="-1" aria-disabled="true">Previous</a>
+            <a class="page-link" href="list.jsp?page=<%=startPage-1%>"tabindex="-1" aria-disabled="true">Previous</a>
          </li>
          <%} %>
          <% for(int i=startPage; i<=endPage; i++){%>
@@ -215,8 +263,16 @@
    </nav>
    <%-- pagination end --%>
          
+	
+			
 
-<div class="text-right">
-   <a class="btn btn-primary" href="write.jsp" role="button">글쓰기</a>
-</div>
-<%@ include file="../footer.jsp" %>
+			  </main>
+  <!-- End #main -->  </main>
+<!-- End Portfolio Section -->
+<!--게시판 end-->
+
+ <div style="bottom:0; width:100%;">
+<%@include file="footer.jsp" %>
+ </div>
+
+

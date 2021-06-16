@@ -3,11 +3,6 @@
 <%@include file="header.jsp" %>
 
 
-<body>
-
-  
-
-  
 
     <!-- ======= About Us Section ======= -->
     <section class="breadcrumbs">
@@ -193,7 +188,7 @@ response.setContentType("text/html; charset=UTF-8");
 					<pre style="padding : 30px 500px 0px 370px; color: rgb(8, 25, 73);"> <strong><%=cafe%></strong>에서 음악감상은 마음의 여유를 찾아줄 거예요.</pre>
 				<%}	else if(sum >= maxScore*0.95){ %>
 					<pre style="padding : 30px 500px 0px 370px; color: rgb(8, 25, 73);"> 당신의 스트레스 점수는 <%=df.format(sum) %>점입니다.</pre>
-					<pre style="padding : 30px 500px 0px 370px; color: rgb(8, 25, 73);"> <strong><%=mentalCenter%></strong> 상담을 추천드립니다.</pre>
+					<pre style="padding : 30px 500px 0px 370px; color: rgb(8, 25, 73);"> <strong><a href="services.jsp" style="text-decoration: none;"><%=mentalCenter%></a></strong> 상담을 추천드립니다.</pre>
 				<%}%>
                    </div>
                    <button type="button" class="btn btn-outline-primary" style="margin : 10px 500px"><a href="about.jsp">다시하기</a></button>
@@ -224,12 +219,12 @@ response.setContentType("text/html; charset=UTF-8");
              
               <div >
               <oi>
-			<li style="font-weight: 300;font-size: 15px; float : left;">0 ~ <%= df.format(maxScore*0.75) %> : 가벼운 스트레스 상태 </li> 
-			<li style="font-weight: 300;  font-size: 15px;"><%= df.format(maxScore*0.75) %> ~ <%= df.format(maxScore*0.85) %> : 중간 스트레스 상태&nbsp;&nbsp;&nbsp</li>
+			<li style="font-weight: 300;font-size: 15px; float : left;">0 ~ <%= df.format(maxScore*0.75) %> : 가벼운 스트레스 상태 (근린공원)</li> 
+			<li style="font-weight: 300;  font-size: 15px;"><%= df.format(maxScore*0.75) %> ~ <%= df.format(maxScore*0.85) %> : 중간 스트레스 상태 (서점)&nbsp;&nbsp;&nbsp</li>
 			
-			<li style="font-weight: 300;font-size: 15px; float : left;"><%= df.format(maxScore*0.85) %> ~ <%= df.format(maxScore*0.9) %> : 많은 스트레스 상태&nbsp;&nbsp;&nbsp;</li>
-			<li style="font-weight: 300;  font-size: 15px;"><%= df.format(maxScore*0.9) %> ~ <%= df.format(maxScore*0.95) %> : 굉장한 스트레스 상태&nbsp;&nbsp;&nbsp;</li>
-			<li style="font-weight: 300;font-size: 15px; float : left;"><%= df.format(maxScore*0.95) %> ~ <%= maxScore %> : 극도의 스트레스 상태&nbsp;&nbsp;&nbsp</li>
+			<li style="font-weight: 300;font-size: 15px; float : left;"><%= df.format(maxScore*0.85) %> ~ <%= df.format(maxScore*0.9) %> : 많은 스트레스 상태 (영화관)&nbsp;&nbsp;&nbsp;</li>
+			<li style="font-weight: 300;  font-size: 15px;"><%= df.format(maxScore*0.9) %> ~ <%= df.format(maxScore*0.95) %> : 굉장한 스트레스 상태 (카페)&nbsp;&nbsp;&nbsp;</li>
+			<li style="font-weight: 300;font-size: 15px; float : left;"><%= df.format(maxScore*0.95) %> ~ <%= maxScore %> : 극도의 스트레스 상태 (정신건강복지센터)&nbsp;&nbsp;&nbsp</li>
 			</oi>
 			</div>
 			</article>
@@ -315,7 +310,6 @@ response.setContentType("text/html; charset=UTF-8");
     
 
   
-	</body>
   <%@ include file="resultMapJs.jsp" %>
     <%@include file="footer.jsp" %>
 

@@ -2,14 +2,17 @@
 
 <script type="text/javascript"
 		src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f54af8924919de3e88d60eba1ed58b18&amp;libraries=services,clusterer"></script>
+		
 	<script>
 	window.onload = function() {
+		
+		
 		//geolocation map start
-				navigator.geolocation.getCurrentPosition(function getLocation(position) {
+				/* navigator.geolocation.getCurrentPosition(function (position) {
 					
 					var lat = position.coords.latitude; // 위도
 					var lon = position.coords.longitude; // 경도
-					
+					console.log(lat, lon);
 					var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 					
 					mapOption = {
@@ -18,8 +21,15 @@
 					};
 					
 					// 지도를 생성
-					var map = new kakao.maps.Map(mapContainer, mapOption);
-					
+					var map = new kakao.maps.Map(mapContainer, mapOption); */
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = { 
+				        center: new kakao.maps.LatLng(37.567291412313274, 126.98226358838974), // 지도의 중심좌표
+				        level: 3 // 지도의 확대 레벨
+				    };
+
+				var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
 					
 			
 				// 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
@@ -43,7 +53,8 @@
 					map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 							
 					//geolocation 좌표
-					var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+					var locPosition  = new kakao.maps.LatLng(37.567291412313274, 126.98226358838974),
+					//var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 			        message = '<div style="padding:5px;">현재 위치</div>'; // 인포윈도우에 표시될 내용입니다
 			    
 			        // 마커와 인포윈도우를 표시합니다
@@ -296,7 +307,7 @@
 					    }
 					}
 
-			  })//위치정보 map end		
+			 // })//위치정보 map end		
 
 		
 	}; //onload end

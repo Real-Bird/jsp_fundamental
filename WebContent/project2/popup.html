@@ -1,0 +1,109 @@
+<html>
+<script type="text/javascript">
+
+		function pop() { 
+		window.open("popup.html", "pop", "width=600,height=400,history=no,resizable=no,status=no,scrollbars=yes,menubar=no")
+		}
+		
+		// 쿠키 생성
+		function setCookie( name, value, expiredays ) {  // 쿠키저장
+			var todayDate = new Date();  //date객체 생성 후 변수에 저장
+			todayDate.setDate( todayDate.getDate() + expiredays ); 
+		   	 // 시간지정(현재시간 + 지정시간)
+			document.cookie = name + "=" + value + "; path=/; expires=" + todayDate.toUTCString() + ";"
+			//위 정보를 쿠키에 굽는다
+		} 
+		$(function(){
+			$(".popup_box").draggable({containment:'parent', scroll:false}); // 레이어 팝업 창 드래그 가능
+			//{containment:'parent', scroll:false} 화면 영역 밖으로 드래그 안됌.
+		                
+			if(document.cookie.indexOf("popToday=close") < 0 ){      // 쿠키 저장여부 체크
+				document.getElementById("popup_layer").style.display = "block";
+				}else {
+				document.getElementById("popup_layer").style.display = "none"; 
+				}
+			});
+		             
+		//오늘하루만보기 닫기버튼 스크립트
+		function closeToday() { 
+			setCookie( "popToday", "close" , 1  ); 
+			$("#popup_layer").css("display", "none");
+			document.getElementById("popup_layer").style.display = "none";
+		}
+		
+		//그냥 닫기버튼 스크립트
+		function closePop() { 
+			window.close();
+			self.close();
+			window.opener = window.location.href; self.close();
+			window.open('about:blank', '_self').close(); 
+			/* document.getElementById("popup_layer").style.display = "none"; */
+		}
+		$(function(){
+			$(".popup_box").draggable({containment:'parent', scroll:false}); // 레이어 팝업 창 드래그 가능
+			//{containment:'parent', scroll:false} 화면 영역 밖으로 드래그 안됌.
+		                
+			if(document.cookie.indexOf("popToday=close") < 0 ){      // 쿠키 저장여부 체크
+				document.getElementById("popup_layer").style.display = "block";
+				}else {
+					document.getElementById("popup_layer").style.display = "none"; 
+				}
+			});
+		             
+ 
+		// 7일동안 닫기버튼 스크립트는 아래 스크립트로 교체
+		function closeToday() { 
+			setCookie( "popToday", "close" , 7 ); 
+			$("#popup_layer" ).css("display", "none");
+			document.getElementById("popup_layer").style.display = "none";
+		}
+		function closePop() { 
+			window.close();
+
+			self.close();
+
+			window.opener = window.location.href; self.close();
+
+			window.open('about:blank', '_self').close(); 
+		}
+		
+		</script>
+		<title>※주의사항※</title>
+<div id="popup_layer">
+  <div class="popup_box">
+      <!--팝업 컨텐츠 영역-->
+      <div class="popup_cont">
+          <h2>[ 글 작성시 주의사항 ]</h2>
+          <p>
+          글 작성 시 특별한 제한은 없습니다.<br>
+		다만, 타인에 대한 명예훼손이나 허위사실 유포 및 정보통신망법에<br>반하는 내용을 게시할 시 관리자에 의해 일방적으로 게시가 중단될 수 있습니다.
+          </p>
+      </div>
+      <!--팝업 버튼 영역-->
+      <div class="popup_btn">
+          <!--하루동안 보지않기-->
+          <a href="javascript:closePop();">Close</a>
+      </div>
+  </div>
+</div>
+      	<style type ="text/css">
+			#popup_layer {position:fixed;top:0;left:0;z-index: 10000; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4);} 
+			/*팝업 박스*/
+			.popup_box{position: relative;top:50%;left:50%; width:550px;transform:translate(-50%, -50%);z-index:1002;box-sizing:border-box;background:#fff;box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);-webkit-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);-moz-box-shadow: 2px 5px 10px 0px rgba(0,0,0,0.35);}
+			/*컨텐츠 영역*/
+			.popup_box .popup_cont {padding:50px;line-height:1.4rem;font-size:14px;word-break: break-word;}
+			.popup_box .popup_cont h2 {padding:15px 0;color:#333;margin:0;}
+			.popup_box .popup_cont p{ border-top: 1px solid #666;padding-top: 30px;}
+			/*버튼영역*/
+			.popup_box .popup_btn {display:table;table-layout: fixed;width:100%;height:70px;background:#5d5d5d;word-break: break-word;}
+			.popup_box .popup_btn a {position: relative; display: table-cell; height:70px; color:#fff; font-size:17px;text-align:center;vertical-align:middle;text-decoration:none; background:#102c5c;}
+			.popup_box .popup_btn a.close_day {background:#5d5d5d;}
+			/*.popup_box .popup_btn a:before{content:'';display:block;position:absolute;top:26px;right:29px;width:1px;height:21px;background:#fff;-moz-transform: rotate(-45deg); -webkit-transform: rotate(-45deg); -ms-transform: rotate(-45deg); -o-transform: rotate(-45deg); transform: rotate(-45deg);}
+			.popup_box .popup_btn a:after{content:'';display:block;position:absolute;top:26px;right:29px;width:1px;height:21px;background:#fff;-moz-transform: rotate(45deg); -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);}
+			*/
+			.popup_box .popup_btn a.close_day:before, .popup_box .popup_btn a.close_day:after{display:none;}
+			
+			/*오버레이 뒷배경*/
+			.popup_overlay{position:fixed;top:0px;right:0;left:0;bottom:0;z-index:1001;;background:rgba(0,0,0,0.5);}
+		</style>
+</html>

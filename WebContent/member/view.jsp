@@ -59,13 +59,13 @@
 				<h3>회원정보</h3>
 	        	<form method="post" name="f" action="update.jsp">
 				  <div class="form-group">
-	                <input type="text" class="form-control disabled" id="email" name="email" value="<%dto.getEmail(); %>" readonly placeholder="Your Email *" />
+	                <input type="text" class="form-control disabled" id="email" name="email" value="<%=dto.getEmail() %>" readonly placeholder="Your Email *" />
 				    <div class="valid-feedback">
 				        Looks good!
 				    </div>
 	              </div>
 	              <div class="form-group">
-	                <input type="password" class="form-control" id="name" name="name"  placeholder="Your name *" value="<%dto.getName(); %>" />
+	                <input type="text" class="form-control" id="name" name="name"  placeholder="Your name *" value="<%=dto.getName() %>" />
 	              	<div class="invalid-feedback" id="errorName">
 				    	이름을 입력하세요.
 				    </div>

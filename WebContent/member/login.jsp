@@ -37,6 +37,7 @@
 	              </div>
 	              <div class="form-group">
 	                <input type="submit" id="loginMember" class="btn btn-primary" value="Login" />
+	                <a href="http://google.com" class="btn btn-info" id="test">here</a>
 	              </div>
 	              
 	            </form>
@@ -45,5 +46,19 @@
 		<!-- col end -->
 	</div>
 	<!-- container end -->
-
+	<script>
+		$(function(){
+			$('#test').click(function(e){
+				e.preventDefault();
+				//확인 ->true, 취소 ->false
+				if(confirm('진짜로 이동하시겠습니까?')){
+					location.href="http://www.google.com";
+				}
+			});
+			$('#loginMember').click(function(e){
+				e.preventDefault();
+				f.submit();
+			});
+		});
+	</script>
 	<%@ include file="../inc/footer.jsp"%>

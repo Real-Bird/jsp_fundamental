@@ -32,7 +32,7 @@ public class CustomerDao {
 
 			StringBuilder sql = new StringBuilder();
 			sql.append("INSERT INTO customer(c_num, c_email, c_pwd, c_name, c_status, c_regdate) ");
-			sql.append("VALUES (>, ?, PASSWORD(?), ?, ?,NOW()) ");
+			sql.append("VALUES (?, ?, PASSWORD(?), ?, ?,NOW()) ");
 
 			pstmt = con.prepareStatement(sql.toString());
 
@@ -64,7 +64,7 @@ public class CustomerDao {
 			StringBuilder sql = new StringBuilder();
 			sql.append("UPDATE customer ");
 			sql.append("SET c_name = ?, ");
-			if(dto.getPwd() != null) {
+			if(dto.getPwd() != null && dto.getPwd().length() > 0) {
 				sql.append("c_prw = PASSWORD(?), ");
 			}
 			sql.append("c_status = ?  ");
@@ -74,7 +74,7 @@ public class CustomerDao {
 
 			int index = 1;
 			pstmt.setString(index++, dto.getName());
-			if(dto.getPwd() != null) {
+			if(dto.getPwd() != null && dto.getPwd().length() > 0) {
 				pstmt.setString(index++, dto.getPwd());
 			}
 			pstmt.setString(index++, dto.getStatus());
@@ -155,6 +155,7 @@ public class CustomerDao {
 
 			if (rs.next()) {
 				index = 1;
+				num = rs.getInt(index++);
 				String email = rs.getString(index++);
 				String pwd = rs.getString(index++);
 				String name = rs.getString(index++);
@@ -269,5 +270,46 @@ public class CustomerDao {
 			close(con, pstmt, rs);
 		}
 		return resultCount;
+	}
+	
+	public CustomerDto getLogin(String email, String pwd) {
+		CustomerDto dto = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		con = ConnLocator.getConnect();
+
+		try {
+
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT c_num, c_email, c_pwd, c_name, c_status, DATE_FORMAT(c_regdate, '%Y/%m/%d') ");
+			sql.append("from customer ");
+			sql.append("WHERE c_email = ? ");
+			sql.append("AND c_pwd = PASSWORD(?) ");
+
+			pstmt = con.prepareStatement(sql.toString());
+
+			int index = 1;
+			pstmt.setString(index++, email);
+			pstmt.setString(index++, pwd);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				index = 1;
+				int num = rs.getInt(index++);
+				email = rs.getString(index++);
+				pwd = rs.getString(index++);
+				String name = rs.getString(index++);
+				String status = rs.getString(index++);
+				String regdate = rs.getString(index++);
+				dto = new CustomerDto(num, email, pwd, name, status, regdate);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return dto;
 	}
 }
