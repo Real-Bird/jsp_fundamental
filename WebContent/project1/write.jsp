@@ -45,9 +45,9 @@ window.addEventListener('load', function() {
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-	  <ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="index.html">Story</a></li>
-	    <li class="breadcrumb-item"><a href="community.jsp">Community</a></li>
+	  <ol>
+	    <li><a href="index.html">Story</a></li>
+	    <li><a href="community.jsp">Community</a></li>
 	 </ol>
 	</div>
 
