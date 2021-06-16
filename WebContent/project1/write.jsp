@@ -64,7 +64,7 @@ window.addEventListener('load', function() {
 	<div class="container">
 		<!-- col start -->
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12" style="margin-top:5px;">
 		
 				<h5>글 작성하기</h5>
 				<%-- form start --%>
@@ -75,19 +75,19 @@ window.addEventListener('load', function() {
 				    id="title" name="title" placeholder="제목을 입력해 주세요">
 				  </div>
 				  
-				    글자수 카운트
 				    	<div>내용</div>
 				    <textarea class="form-control" id = "content" name="content" rows="10" cols="" onkeydown="calc()"
 				    onkeyup="calc()" maxlength= "100" onkeypress="calc()" placeholder="텍스트는 최대 100자까지 입력 가능합니다."></textarea>
+				    글자수 카운트
 				 <input type="number" id="result" value="0" readonly style="border:none">자
 				 	</form>
 				  <%-- 사진첨부하기 start --%>
-				  	<!-- <form>
+				  	<form>
 					  <div class="form-group">
 					    <label for="exampleFormControlFile1">이미지 첨부</label>
 					    <input type="file" class="form-control-file" id="exampleFormControlFile1"  style="width:86px;">
 					  </div>
-					</form> -->
+					</form>
 				<%-- 사진첨부하기 end --%>
 					
 				<!-- 	<form name="noticeForm" method="post" action="saveDb.jsp">
@@ -107,9 +107,9 @@ window.addEventListener('load', function() {
 					
 				<div class="text-right">
 					<a class="btn btn-secondary" href="community.jsp" 
-					role="button">취소하기</a>
+					role="button" style="margin-bottom:5px;">취소하기</a>
 					<a class="btn btn-submit" id="saveNotice"
-					role="button">작성하기</a>
+					role="button" style="margin-bottom:5px;">작성하기</a>
 				</div>
 				<%-- form end --%>
 			</div>

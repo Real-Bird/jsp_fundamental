@@ -73,7 +73,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <ol>
             <li><a href="index.html">HOME</a></li>
-            <li>cummunity</li>
+            <li>community</li>
           </ol>
         </div>
 
