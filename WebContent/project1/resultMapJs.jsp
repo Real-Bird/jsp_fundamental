@@ -8,7 +8,7 @@
 		
 		
 		//geolocation map start
-				navigator.geolocation.getCurrentPosition(function (position) {
+				  navigator.geolocation.getCurrentPosition(function (position) {
 					
 					var lat = position.coords.latitude; // 위도
 					var lon = position.coords.longitude; // 경도
@@ -26,8 +26,8 @@
 				    mapOption = { 
 				        center: new kakao.maps.LatLng(37.567291412313274, 126.98226358838974), // 지도의 중심좌표
 				        level: 3 // 지도의 확대 레벨
-				    };
- */
+				    }; */
+
 				var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 					
