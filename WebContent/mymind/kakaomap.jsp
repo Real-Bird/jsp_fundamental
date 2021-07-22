@@ -10,7 +10,7 @@ response.setContentType("text/html; charset=UTF-8");
 %>
 
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta charset="UTF-8">
 <title>Time Wizard Map</title>

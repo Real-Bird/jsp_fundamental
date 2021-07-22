@@ -13,7 +13,7 @@
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
         Designed by <a href="">kpc</a>
       </div>
-    </div>
+    </div> 
   </footer><!-- End Footer -->
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 

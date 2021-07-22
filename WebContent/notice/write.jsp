@@ -11,7 +11,7 @@
 		cPage = Integer.parseInt(tempPage);
 	}catch(NumberFormatException e){
 		cPage = 1;
-	}
+	} 
 %>
 <!-- breadcrumb start -->
 <nav aria-label="breadcrumb">

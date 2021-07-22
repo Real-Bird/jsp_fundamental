@@ -19,7 +19,7 @@
 	
 	if(tempNum == null || tempNum.length() == 0){
 		num = -1;
-	}
+	} 
 	try{
 		num = Integer.parseInt(tempNum);
 	}catch(NumberFormatException e){

@@ -4,7 +4,7 @@
 <%@page import="kr.or.kpc.dao.NoticeDao"%>
 <%@ page pageEncoding="utf-8"%>
 <%@ include file="../inc/header.jsp"%>
-<%
+<% 
 	String tempPage = request.getParameter("page");
 	int cPage = 0;
 	if(tempPage == null || tempPage.length() == 0){

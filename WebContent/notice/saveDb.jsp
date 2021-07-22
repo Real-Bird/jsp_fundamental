@@ -22,4 +22,4 @@
 		alert('에러...');
 		history.back(-1);
 	</script>
-<%	}%>
+<%	}%> 

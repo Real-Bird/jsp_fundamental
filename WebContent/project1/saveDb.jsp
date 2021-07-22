@@ -3,7 +3,7 @@
 <%@page import="mind.dao.MaincontDao"%>
 <%@ page pageEncoding="utf-8" %>
 
-<%
+<% 
 	request.setCharacterEncoding("utf-8");
 	String writer = request.getParameter("writer");
 	String title = request.getParameter("title");

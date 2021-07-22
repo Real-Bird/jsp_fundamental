@@ -1,5 +1,5 @@
 <%@ page pageEncoding="utf-8" %>
-<%@include file="header.jsp" %>
+<%@include file="header.jsp" %> 
 
 <style>
 table tbody {

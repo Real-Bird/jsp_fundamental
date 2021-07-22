@@ -10,7 +10,7 @@
 	if(tempPage == null || tempPage.length() == 0){
 		cPage = 1;
 	}
-	try{
+	try{ 
 		cPage = Integer.parseInt(tempPage);
 	}catch(NumberFormatException e){
 		cPage = 1;
