@@ -33,11 +33,8 @@ window.addEventListener('load', function() {
 			noticeForm.submit();
 		});
 	});
-	});
-		
-		
-	
-	</script>
+	});	
+</script>
 <body onload="javascript:pop();">
 	<main id="main">
 	<!-- ======= Our Portfolio Section ======= -->
